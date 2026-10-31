@@ -10,7 +10,7 @@ The native macOS app uses system-provided Apple platform frameworks including Sw
 
 The actual Windows portable ZIP includes the CPython 3.12 interpreter, Tcl/Tk, OpenSSL 3, libffi, zlib, Microsoft Visual C++ Runtime and UCRT DLLs, plus Python packages such as Pillow, ReportLab, pypdfium2/PDFium and Requests. PyInstaller is the build tool. Each redistributed component has its own terms.
 
-**NOT CLEARED FOR PUBLIC DISTRIBUTION.** Package/PDFium license texts were collected in the private build, but the runtime notice bundle is **incomplete**: CPython, Tcl/Tk, OpenSSL, libffi and zlib notices need to be completed; Microsoft's Visual C++ Runtime/UCRT redistribution authorization for the exact shipped DLLs must be verified. See [the component-by-component license audit](LICENSE_AUDIT_BETA5.md). The final license set must accompany the exact released binaries.
+**New licensed build (private run 41229763027):** The Windows ZIP now embeds the complete identified runtime and package license texts in the `RetroCoverStudio/LICENSES/` directory (60 files), including PDFium component licenses and CPython's Microsoft CRT conditions. **Public-distribution clearance remains pending** for confirmation of Microsoft's runtime redistribution conditions, a clean Windows Defender scan, and provider/content terms. See [the audited component inventory](LICENSE_AUDIT_BETA5.md).
 
 ## Optional online services
 
