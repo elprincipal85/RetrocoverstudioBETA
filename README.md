@@ -2,6 +2,14 @@
 
 **Design print-ready physical game covers and disc labels** for your personal retro-game collection. Desktop applications for macOS and Windows.
 
+AI-Assisted Development
+
+Retro Cover Studio was developed with the assistance of OpenAI’s ChatGPT.
+
+The project concept, requirements, feature decisions, testing, and release management were directed by the project author. ChatGPT assisted with software implementation, debugging, and documentation.
+
+The project is independently maintained and is not affiliated with or endorsed by OpenAI.
+
 > **Release status:** Beta 5 documentation is being prepared. No public downloadable binary is published yet. Downloads will appear under [Releases](https://github.com/elprincipal85/RetrocoverstudioBETA/releases) after final security, license, and packaging checks.
 
 ## Download formats
