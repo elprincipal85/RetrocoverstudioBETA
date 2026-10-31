@@ -18,7 +18,7 @@
 - `RetroCoverStudio-macOS-v0.95.0-beta.5.zip`
 - `RetroCoverStudio-Windows-folder-v0.95.0-beta.5.zip`
 - `SHA256SUMS-BETA5.txt` (the exact SHA-256 hashes of the final published ZIPs)
-- `LICENSE`, `THIRD_PARTY_NOTICES.md`, plus any required bundled third-party license texts.
+- `LICENSE` and `THIRD_PARTY_NOTICES.md`. The Windows portable folder includes its own `LICENSE.txt`, `THIRD_PARTY_NOTICES.md`, and 60 runtime/package license texts under `LICENSES/`.
 
 ## Installing
 
@@ -34,4 +34,4 @@
 - Verify printed dimensions at 100% against your actual case/media.
 - Online artwork usage and printing are subject to provider terms and artwork owners' rights.
 
-**Publishing gates:** verify final security scans, include the exact applicable third-party licenses (especially PDFium's bundled components), check API/content terms, and confirm final ZIP checksums.
+**Publishing gates:** exact third-party/runtime notices are bundled and final ZIP SHA-256 hashes verified. Remaining: clean Windows Defender test, confirmation of Microsoft runtime redistribution conditions and SteamGridDB provider terms, and macOS first-run behavior.
