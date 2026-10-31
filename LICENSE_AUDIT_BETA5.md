@@ -1,80 +1,63 @@
-# Retro Cover Studio v0.95.0-beta.5 — runtime license audit
+# Retro Cover Studio 0.95.0-beta.5 — actual binary license audit
 
-Audit date: 2026-10-31. Based on the **actual built macOS and Windows ZIP archives** from private GitHub Actions run 41229763027, not just `requirements.txt`.
+**Verified candidate build:** private GitHub Actions [run 41230818790](https://github.com/elprincipal85/RetroCoverStudio/actions/runs/41230818790), 2026-10-31.
 
-**Disposition: HOLD PUBLIC RELEASE.** This is a technical inventory and preliminary license analysis, not a legal opinion. Security scanning and SteamGridDB provider/content terms are separate open gates.
+**Microsoft runtime redistribution issue: RESOLVED BY NOT DISTRIBUTING SEPARATE MICROSOFT RUNTIME DLLs.** The application still depends on the Microsoft Visual C++ x64 Redistributable being installed on Windows by the end user. The embedded Microsoft-linked code in CPython binaries remains subject to the CPython-provided Microsoft pass-through restrictions. Final public publication also depends on a clean-system Defender/user test and separate SteamGridDB/provider/content terms.
 
-## macOS Universal ZIP
+## Confirmed released-binary candidates
 
-Contents examined: `Retro Cover Studio.app/Contents/MacOS/Retro Cover Studio`, `Resources/AppIcon.icns`, `Resources/Assets.car`, `Info.plist` and `PkgInfo`. No separately packaged Python, OpenSSL, Tcl/Tk, PDFium, or other third-party runtime binaries. Uses system-provided Apple SwiftUI/AppKit/Foundation/PDFKit/CoreGraphics frameworks.
+| Package | SHA-256 of the inner application ZIP |
+| --- | --- |
+| Windows 10/11 x64 portable folder | `f961d1b0d5ce209026879dff3f20a8098d4cea8bce0396d07ae89fee6596c776` |
+| macOS universal app | `e7afd37b969056807c0d87a8ecfd3511c5e548d6e760e61c31804d1a2c6631fe` |
 
-- No extra third-party runtime license files identified for this macOS ZIP.
-- Confirm authorship/right to distribute the app icon and all custom resources.
-- Apple's Xcode/macOS distribution terms still apply; unsigned/not-notarized launch behavior is a separate security and usability gate.
-- Own application source is MIT licensed. Include the project's own LICENSE in the release.
+See [the complete checksum manifest](SHA256SUMS-BETA5.txt). ZIP integrity was checked independently; these hashes are not malware certificates.
 
-Official references: https://help.apple.com/xcode/mac/current/en.lproj/dev31de635e5.html ; https://developer.apple.com/support/terms/apple-developer-program-license-agreement/
+## Windows: Microsoft libraries and authorization
 
-## Windows portable folder ZIP
+The prior candidate ZIP bundled **45 individual Microsoft DLLs**, consisting of `VCRUNTIME140.dll`, `VCRUNTIME140_1.dll`, `ucrtbase.dll` and numerous `api-ms-win-*.dll` API-set forwarders.
 
-**Confirmed runtime files in `RetroCoverStudio/_internal/`:**
+The new candidate ZIP was rebuilt with `--onedir` and a controlled removal step. An independent inspection of all ZIP entries confirms **zero separately bundled Microsoft VC++/UCRT/API-set runtime DLLs**. CI also enforces the absence of these libraries and checks the frozen EXE after pruning.
 
-| Component | Found in archive | License and required action |
-| --- | --- | --- |
-| CPython 3.12 | `python312.dll`, `_*.pyd` | PSF License v2; ship Python 3.12 LICENSE and appropriate incorporated-software notices |
-| Tcl/Tk | `tcl86t.dll`, `tk86t.dll`, `tcl8/`, `_tk_data/` | Tcl/Tk BSD-like license; `_tk_data/license.terms` is present; include applicable Tcl/Tk notices |
-| OpenSSL 3 | `libssl-3.dll`, `libcrypto-3.dll` | Apache License 2.0; include text and applicable notices |
-| libffi | `libffi-8.dll` | MIT-style license; include copyright and full text |
-| zlib | `zlib1.dll` | zlib license; retain applicable notices |
-| Microsoft Visual C++ | `VCRUNTIME140.dll`, `VCRUNTIME140_1.dll` | **Unresolved redistribution/provenance verification:** Microsoft REDIST eligibility and terms |
-| Microsoft UCRT / API sets | `ucrtbase.dll`, `api-ms-win-*.dll` | **Unresolved redistribution/provenance verification:** Windows 10/11 normally provide UCRT; confirm which bundled copies can or should be shipped |
-| pypdfium2/PDFium | `pypdfium2_raw/pdfium.dll` and license data | Apache/BSD and PDFium dependency notices; PDFium bundle's detailed BUILD_LICENSES are present in the collected third-party license archive |
-| Pillow, Requests, ReportLab, certifi etc. | bundled Python runtime dependencies | Collected package license inventory is available separately; include relevant texts in the final release |
+**Windows 10/11 UCRT:** Microsoft documents UCRT as a built-in operating-system component; it is provided by Windows, not this package.
 
-**Updated package check (run 41229763027):** The Windows folder ZIP now contains 60 third-party and runtime license files under `RetroCoverStudio/LICENSES/`, including full CPython 3.12 and its incorporated-software notices, CPython's Microsoft CRT conditions, Tcl/Tk, OpenSSL 3, libffi, zlib, and collected Python package/PDFium component licenses. The ZIP passed an automated file-presence check and an independent archive-integrity check. This alone is not proof of compliance with separate Microsoft redistribution obligations.
+**Microsoft VC++ x64 Runtime:** `python312.dll`, `_tkinter.pyd`, and OpenSSL depend on VC++ runtime APIs. Users install the **official Microsoft Visual C++ x64 Redistributable** when needed, directly from Microsoft, subject to Microsoft's installer terms. We distribute neither the redistributable installer nor standalone `vcruntime140*.dll` copies.
 
-**Important:** PyInstaller is used to build the executable. Its own official special GPL exception allows packaging and distributing proprietary or commercial programs without forcing the resulting app under GPL; third-party runtime terms still apply.
+**CPython Microsoft Distributable Code conditions:** Compiled Python code may still include embedded Microsoft-linked code. The official CPython `PC/crtlicense.txt` is included verbatim at `LICENSES/windows_runtime/PYTHON-3.12-MICROSOFT-CRT-CONDITIONS.txt`; `README_FIRST_WINDOWS.txt` gives user-facing terms and refers to this file. Required conditions include preserving notices, no false Microsoft endorsement, use on Microsoft-supported platforms, and no illegal or malicious use. Do not represent the MIT source license as replacing these conditions.
 
-**Microsoft runtime decision needed:** identify the precise originating Windows SDK/CPython runtime binaries, verify permissible REDIST items/terms for this distribution, and decide whether the redundant UCRT/API-set copies should be excluded from a newly tested build. Do not remove DLLs from the existing tested ZIP without rebuilding, testing, and recalculating checksums.
+**Conclusion:** The issue concerning the publisher's authorization to ship *separate Microsoft runtime DLLs* is removed by excluding all those files from the distributed ZIP. This does not represent a binding legal opinion or override the CPython linked-code conditions.
 
-## Mandatory release actions
+Official documentation:
+- [Visual C++ redistribution](https://learn.microsoft.com/en-us/cpp/windows/redistributing-visual-cpp-files)
+- [Official Visual C++ Redistributable download information](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist/)
+- [Universal CRT and Windows 10/11](https://learn.microsoft.com/en-us/cpp/windows/universal-crt-deployment?view=msvc-170)
+- [CPython CRT pass-through conditions](https://github.com/python/cpython/blob/3.12/PC/crtlicense.txt)
 
-1. **Done:** include CPython 3.12 and its incorporated software licenses, Tcl/Tk, OpenSSL 3, libffi, zlib and full Python package/PDFium notices in the actual portable folder ZIP.
-2. Review and document Microsoft's **Visual C++/UCRT redistribution rights** for the exact binaries distributed, including the Python Windows build's additional CRT terms.
-3. **Done for currently identified components:** exact Windows ZIP embeds the source MIT license, third-party notice index and 60 runtime/package license files under `LICENSES/`.
-4. **Done:** rebuilt the licensed folder ZIP and verified SHA-256 `779ff372b23e0c08dba265d30765214b68c69b2ed2de0db3abfe8e26e04ab1d7`. **Still required:** Microsoft Defender scan on the exact new ZIP extracted to a clean Windows system.
-5. Separately resolve SteamGridDB API/content terms and the initial-launch safety testing before public release.
+## Windows: other licenses
 
-## Primary licenses and documentation
+The exact portable ZIP contains the application's MIT license and **63 runtime/package license and notice files** under `RetroCoverStudio/LICENSES/`:
 
-- Python 3.12: https://docs.python.org/3.12/license.html
-- CPython Windows CRT conditions: https://github.com/python/cpython/blob/3.12/PC/crtlicense.txt
-- Microsoft redistribution: https://learn.microsoft.com/en-us/cpp/windows/redistributing-visual-cpp-files?view=msvc-170
-- Microsoft DLL identification: https://learn.microsoft.com/en-us/cpp/windows/determining-which-dlls-to-redistribute?view=msvc-170
-- OpenSSL 3: https://openssl-library.org/source/license/index.html
-- Tcl/Tk: https://github.com/tcltk/tk/blob/main/license.terms
-- libffi: https://github.com/libffi/libffi/blob/master/LICENSE
-- zlib: https://zlib.net/zlib_license.html
-- PDFium notices: https://pypdfium2.readthedocs.io/en/stable/readme.html
-- PyInstaller exception: https://www.pyinstaller.org/en/stable/license.html
+- Python 3.12 PSF license and notices for incorporated software
+- Tcl/Tk license
+- OpenSSL 3 Apache 2.0 license
+- libffi and zlib licenses
+- Installed wheel/package notices for Pillow, ReportLab, Requests, pypdfium2, and dependencies, including PDFium BUILD_LICENSES for its embedded components
+- CPython Microsoft-linked-code additional conditions
 
-## Microsoft runtime verification against official terms (2026-10-31)
+The private CI validates presence of expected files and PDFium notices before packaging. The app has **no user SteamGridDB API keys or downloaded game covers** bundled with it.
 
-**Files actually present in the checked ZIP:** `VCRUNTIME140.dll`, `VCRUNTIME140_1.dll`, `ucrtbase.dll`, and `api-ms-win-*.dll` in the `RetroCoverStudio/_internal/` directory.
+## macOS
 
-**1. Visual C++ (VC Runtime).** Microsoft's "Redistribute Visual C++ files" page states that redistribution of individual DLLs or the VC Redistributable package is subject to the terms of a **validly licensed Visual Studio** edition. The Visual Studio 2022 REDIST list permits distribution of specified unmodified binaries in `VC/Redist` subject to that license. Microsoft says individual developers may use **Visual Studio Community** to create free or paid applications. However, this audit has not verified that the publisher has an eligible valid Visual Studio/Build Tools license, nor has it verified that the copied DLLs came from the permitted REDIST source. **Decision: conditional, not cleared merely by including license text.**
+The inspected universal `.app` uses Apple system SwiftUI, AppKit, Foundation, PDFKit, and CoreGraphics frameworks; these frameworks are not redistributed as separate runtime binaries inside the ZIP. No additional third-party runtime DLLs/framework packages were identified. Original application icons, software MIT license, and Apple platform rules remain relevant.
 
-**2. Universal C Runtime (UCRT).** Microsoft documents UCRT as an operating-system component built into **Windows 10 and 11**. System-provided UCRT is preferred; on these systems Windows loads the system copy even when a local `ucrtbase.dll` is included. The currently bundled `ucrtbase.dll` and `api-ms-win-*.dll` add avoidable Microsoft redistribution questions. **Recommended revision: omit redundant UCRT/API-set copies in a freshly built and retested Windows 10/11-only package.** Do not remove files from an existing ZIP and claim it is still the verified build.
+## Technical verification and remaining release gates
 
-**3. CPython 3.12 additional Microsoft CRT conditions.** The bundled `PYTHON-3.12-MICROSOFT-CRT-CONDITIONS.txt` requires complying with Microsoft's restrictions, including not altering Microsoft notices, not implying Microsoft endorsement, running on Microsoft's platforms, and not using included Microsoft code for malicious/deceptive/unlawful software. It also calls for distribution/end-user terms protecting Microsoft code. Merely storing a text file in the ZIP is not proof that all pass-through conditions were met. **Decision: ensure appropriate user-facing terms/acceptance and preserve notices.**
+- **PASSED:** New macOS and Windows build jobs.
+- **PASSED:** Windows core unit tests.
+- **PASSED:** The frozen Windows EXE's own headless Tcl/PDF generation/PDFium runtime self-test on the GitHub Windows runner after pruning.
+- **PASSED:** Independent new ZIP integrity checks, SHA-256 verification, zero extra Microsoft VC++/UCRT DLLs, and presence of license notices.
+- **PENDING:** Real clean Windows 10/11 x64 machine test after installation of official VC++ x64 Redistributable, with up-to-date Microsoft Defender. Do not disable security products or bypass warnings.
+- **PENDING:** Clean macOS first-run / unsigned-app warning UX.
+- **SEPARATE LEGAL QUESTION:** Provider API and third-party game artwork rights under SteamGridDB's terms and users' respective jurisdictions.
 
-**4. Alternative release packaging.** If a qualifying Microsoft license / REDIST provenance cannot be verified, do **not** privately repackage or redistribute arbitrary Microsoft runtime DLLs. Instead consider a rebuilt Windows portable app **without separately bundled Microsoft VC and UCRT DLLs**, documenting an official Microsoft Visual C++ x64 Redistributable prerequisite. That preserves the folder-only distribution but makes system VC++ runtime installation a prerequisite; perform a clean Windows test and fresh Defender scan first.
-
-**Conclusions:** Free or commercial publication of the application is not generically prohibited by these terms, but the **current ZIP is not yet cleared for public distribution**. The outstanding facts are: eligibility for Microsoft's licensed REDIST mechanism or a rebuilt package omitting the separate Microsoft redistributables, CPython pass-through terms, and a clean-system functional/security test.
-
-Official references:
-- Microsoft REDIST/license gate: https://learn.microsoft.com/en-us/cpp/windows/redistributing-visual-cpp-files?view=msvc-170
-- Visual Studio 2022 REDIST list: https://learn.microsoft.com/en-us/visualstudio/releases/2022/redistribution
-- Individual Visual Studio Community usage: https://visualstudio.microsoft.com/vs/community/
-- Microsoft Windows 10/11 UCRT: https://learn.microsoft.com/en-us/cpp/windows/universal-crt-deployment?view=msvc-170
-- CPython 3.12 CRT conditions: https://github.com/python/cpython/blob/3.12/PC/crtlicense.txt
+**Public-binary status:** Draft/release candidate, not published. Owner approves public distribution only after the remaining release gates are satisfied.
