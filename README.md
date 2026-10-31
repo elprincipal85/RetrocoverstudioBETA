@@ -2,7 +2,7 @@
 
 **Design print-ready physical game covers and disc labels** for your personal retro-game collection. Desktop applications for macOS and Windows.
 
-AI-Assisted Development
+## AI-Assisted Development
 
 Retro Cover Studio was developed with the assistance of OpenAI’s ChatGPT.
 
