@@ -4,13 +4,13 @@ The project's own software is licensed under MIT (see [LICENSE](LICENSE)). This 
 
 ## macOS
 
-The native macOS app uses Apple platform frameworks including SwiftUI, AppKit, Foundation, PDFKit and CoreGraphics.
+The native macOS app uses system-provided Apple platform frameworks including SwiftUI, AppKit, Foundation, PDFKit and CoreGraphics. The inspected macOS ZIP contains no third-party runtime binary; Apple's developer terms and the rights to the app's bundled icon/resources still apply.
 
 ## Windows portable folder
 
-The Windows build uses Python/Tkinter and packaged dependencies including Pillow, ReportLab, pypdfium2/PDFium, Requests, and PyInstaller. Those dependencies carry their own licenses and attribution requirements.
+The actual Windows portable ZIP includes the CPython 3.12 interpreter, Tcl/Tk, OpenSSL 3, libffi, zlib, Microsoft Visual C++ Runtime and UCRT DLLs, plus Python packages such as Pillow, ReportLab, pypdfium2/PDFium and Requests. PyInstaller is the build tool. Each redistributed component has its own terms.
 
-**This is a preliminary notice, not the complete Windows license bundle.** Before public distribution, the exact built packages and relevant PDFium/transitive license texts must be verified and included with the released archive or as an accompanying download. The complete package-license inventory is prepared during the private build.
+**NOT CLEARED FOR PUBLIC DISTRIBUTION.** Package/PDFium license texts were collected in the private build, but the runtime notice bundle is **incomplete**: CPython, Tcl/Tk, OpenSSL, libffi and zlib notices need to be completed; Microsoft's Visual C++ Runtime/UCRT redistribution authorization for the exact shipped DLLs must be verified. See [the component-by-component license audit](LICENSE_AUDIT_BETA5.md). The final license set must accompany the exact released binaries.
 
 ## Optional online services
 
