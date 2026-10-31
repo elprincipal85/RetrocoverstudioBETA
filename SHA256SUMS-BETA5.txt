@@ -1,0 +1,6 @@
+# SHA-256 of the exact Beta 5 inner application ZIPs from private GitHub Actions build 41229763027
+# This is a release-preparation manifest; binaries are NOT published yet.
+# Windows is PORTABLE FOLDER ONLY and includes 60 runtime / dependency license files.
+# SHA-256 confirms file integrity, not security clearance.
+779ff372b23e0c08dba265d30765214b68c69b2ed2de0db3abfe8e26e04ab1d7  RetroCoverStudio-Windows-folder-v0.95.0-beta.5.zip
+b0726faf7a95fe1e1046566e553cd75c0fdc1c51a27a24a4f5d02a890ff39f40  RetroCoverStudio-macOS-v0.95.0-beta.5.zip
