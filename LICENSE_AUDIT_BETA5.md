@@ -1,6 +1,6 @@
 # Retro Cover Studio v0.95.0-beta.5 — runtime license audit
 
-Audit date: 2026-10-31. Based on the **actual built macOS and Windows ZIP archives** from private GitHub Actions run 41227762932, not just `requirements.txt`.
+Audit date: 2026-10-31. Based on the **actual built macOS and Windows ZIP archives** from private GitHub Actions run 41229763027, not just `requirements.txt`.
 
 **Disposition: HOLD PUBLIC RELEASE.** This is a technical inventory and preliminary license analysis, not a legal opinion. Security scanning and SteamGridDB provider/content terms are separate open gates.
 
@@ -31,7 +31,7 @@ Official references: https://help.apple.com/xcode/mac/current/en.lproj/dev31de63
 | pypdfium2/PDFium | `pypdfium2_raw/pdfium.dll` and license data | Apache/BSD and PDFium dependency notices; PDFium bundle's detailed BUILD_LICENSES are present in the collected third-party license archive |
 | Pillow, Requests, ReportLab, certifi etc. | bundled Python runtime dependencies | Collected package license inventory is available separately; include relevant texts in the final release |
 
-The earlier `RetroCoverStudio-Windows-ThirdPartyLicenses-v0.95.0-beta.5.zip` contains the Python **package** notices, including PDFium dependency licenses, but does **not** reliably cover the entire CPython, OpenSSL, Tcl/Tk, libffi, zlib, and Microsoft runtime inventory. Do not treat it as the completed compliance package.
+**Updated package check (run 41229763027):** The Windows folder ZIP now contains 60 third-party and runtime license files under `RetroCoverStudio/LICENSES/`, including full CPython 3.12 and its incorporated-software notices, CPython's Microsoft CRT conditions, Tcl/Tk, OpenSSL 3, libffi, zlib, and collected Python package/PDFium component licenses. The ZIP passed an automated file-presence check and an independent archive-integrity check. This alone is not proof of compliance with separate Microsoft redistribution obligations.
 
 **Important:** PyInstaller is used to build the executable. Its own official special GPL exception allows packaging and distributing proprietary or commercial programs without forcing the resulting app under GPL; third-party runtime terms still apply.
 
@@ -39,10 +39,10 @@ The earlier `RetroCoverStudio-Windows-ThirdPartyLicenses-v0.95.0-beta.5.zip` con
 
 ## Mandatory release actions
 
-1. Assemble full license/NOTICE files for **CPython 3.12, Tcl/Tk, OpenSSL 3, libffi and zlib**, alongside the existing Python-package/PDFium notices.
+1. **Done:** include CPython 3.12 and its incorporated software licenses, Tcl/Tk, OpenSSL 3, libffi, zlib and full Python package/PDFium notices in the actual portable folder ZIP.
 2. Review and document Microsoft's **Visual C++/UCRT redistribution rights** for the exact binaries distributed, including the Python Windows build's additional CRT terms.
-3. Bundle final notices with the **actual Windows ZIP** (or unambiguously alongside it) and ensure the own MIT license is distributed.
-4. If any binary or package content changes, rebuild and recalculate SHA-256; run malware scanning on the exact new build.
+3. **Done for currently identified components:** exact Windows ZIP embeds the source MIT license, third-party notice index and 60 runtime/package license files under `LICENSES/`.
+4. **Done:** rebuilt the licensed folder ZIP and verified SHA-256 `779ff372b23e0c08dba265d30765214b68c69b2ed2de0db3abfe8e26e04ab1d7`. **Still required:** Microsoft Defender scan on the exact new ZIP extracted to a clean Windows system.
 5. Separately resolve SteamGridDB API/content terms and the initial-launch safety testing before public release.
 
 ## Primary licenses and documentation
