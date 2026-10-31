@@ -57,3 +57,24 @@ Official references: https://help.apple.com/xcode/mac/current/en.lproj/dev31de63
 - zlib: https://zlib.net/zlib_license.html
 - PDFium notices: https://pypdfium2.readthedocs.io/en/stable/readme.html
 - PyInstaller exception: https://www.pyinstaller.org/en/stable/license.html
+
+## Microsoft runtime verification against official terms (2026-10-31)
+
+**Files actually present in the checked ZIP:** `VCRUNTIME140.dll`, `VCRUNTIME140_1.dll`, `ucrtbase.dll`, and `api-ms-win-*.dll` in the `RetroCoverStudio/_internal/` directory.
+
+**1. Visual C++ (VC Runtime).** Microsoft's "Redistribute Visual C++ files" page states that redistribution of individual DLLs or the VC Redistributable package is subject to the terms of a **validly licensed Visual Studio** edition. The Visual Studio 2022 REDIST list permits distribution of specified unmodified binaries in `VC/Redist` subject to that license. Microsoft says individual developers may use **Visual Studio Community** to create free or paid applications. However, this audit has not verified that the publisher has an eligible valid Visual Studio/Build Tools license, nor has it verified that the copied DLLs came from the permitted REDIST source. **Decision: conditional, not cleared merely by including license text.**
+
+**2. Universal C Runtime (UCRT).** Microsoft documents UCRT as an operating-system component built into **Windows 10 and 11**. System-provided UCRT is preferred; on these systems Windows loads the system copy even when a local `ucrtbase.dll` is included. The currently bundled `ucrtbase.dll` and `api-ms-win-*.dll` add avoidable Microsoft redistribution questions. **Recommended revision: omit redundant UCRT/API-set copies in a freshly built and retested Windows 10/11-only package.** Do not remove files from an existing ZIP and claim it is still the verified build.
+
+**3. CPython 3.12 additional Microsoft CRT conditions.** The bundled `PYTHON-3.12-MICROSOFT-CRT-CONDITIONS.txt` requires complying with Microsoft's restrictions, including not altering Microsoft notices, not implying Microsoft endorsement, running on Microsoft's platforms, and not using included Microsoft code for malicious/deceptive/unlawful software. It also calls for distribution/end-user terms protecting Microsoft code. Merely storing a text file in the ZIP is not proof that all pass-through conditions were met. **Decision: ensure appropriate user-facing terms/acceptance and preserve notices.**
+
+**4. Alternative release packaging.** If a qualifying Microsoft license / REDIST provenance cannot be verified, do **not** privately repackage or redistribute arbitrary Microsoft runtime DLLs. Instead consider a rebuilt Windows portable app **without separately bundled Microsoft VC and UCRT DLLs**, documenting an official Microsoft Visual C++ x64 Redistributable prerequisite. That preserves the folder-only distribution but makes system VC++ runtime installation a prerequisite; perform a clean Windows test and fresh Defender scan first.
+
+**Conclusions:** Free or commercial publication of the application is not generically prohibited by these terms, but the **current ZIP is not yet cleared for public distribution**. The outstanding facts are: eligibility for Microsoft's licensed REDIST mechanism or a rebuilt package omitting the separate Microsoft redistributables, CPython pass-through terms, and a clean-system functional/security test.
+
+Official references:
+- Microsoft REDIST/license gate: https://learn.microsoft.com/en-us/cpp/windows/redistributing-visual-cpp-files?view=msvc-170
+- Visual Studio 2022 REDIST list: https://learn.microsoft.com/en-us/visualstudio/releases/2022/redistribution
+- Individual Visual Studio Community usage: https://visualstudio.microsoft.com/vs/community/
+- Microsoft Windows 10/11 UCRT: https://learn.microsoft.com/en-us/cpp/windows/universal-crt-deployment?view=msvc-170
+- CPython 3.12 CRT conditions: https://github.com/python/cpython/blob/3.12/PC/crtlicense.txt
