@@ -24,7 +24,7 @@
 
 **macOS 13+:** Unzip and move `Retro Cover Studio.app` to Applications. This unsigned and unnotarized beta may prompt macOS security checks. Do not bypass security software.
 
-**Windows 10/11:** Unzip the complete portable folder archive and keep all files inside `RetroCoverStudio` together. Start the included `RetroCoverStudio.exe` from that folder. **There is no standalone EXE download**. Do not bypass any Defender warnings.
+**Windows 10/11 (x64):** Install the official [Microsoft Visual C++ x64 Redistributable](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist/) if it is not installed already. No Microsoft VC++/UCRT DLL copies are included in the planned updated ZIP. Unzip the complete portable folder archive and keep all files inside `RetroCoverStudio` together. Start the included `RetroCoverStudio.exe` from that folder. **There is no standalone EXE download**. Do not bypass any Defender warnings.
 
 ## Known limitations
 
