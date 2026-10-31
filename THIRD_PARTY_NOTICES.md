@@ -8,9 +8,11 @@ The native macOS app uses system-provided Apple platform frameworks including Sw
 
 ## Windows portable folder
 
-The actual Windows portable ZIP includes the CPython 3.12 interpreter, Tcl/Tk, OpenSSL 3, libffi, zlib, Microsoft Visual C++ Runtime and UCRT DLLs, plus Python packages such as Pillow, ReportLab, pypdfium2/PDFium and Requests. PyInstaller is the build tool. Each redistributed component has its own terms.
+The current **verified Windows 10/11 x64 candidate from GitHub Actions run 41230818790** is a `--onedir` ZIP, with its own MIT license and **63 third-party license/notice files** under `RetroCoverStudio/LICENSES/`. These cover CPython 3.12 and incorporated components, Tcl/Tk, OpenSSL 3, libffi, zlib, Pillow, ReportLab, Requests, pypdfium2/PDFium (including component BUILD_LICENSES), and other packaged dependencies.
 
-**New licensed build (private run 41229763027):** The Windows ZIP now embeds the complete identified runtime and package license texts in the `RetroCoverStudio/LICENSES/` directory (60 files), including PDFium component licenses and CPython's Microsoft CRT conditions. **Public-distribution clearance remains pending** for confirmation of Microsoft's runtime redistribution conditions, a clean Windows Defender scan, and provider/content terms. See [the audited component inventory](LICENSE_AUDIT_BETA5.md).
+**No separately bundled Microsoft Visual C++/UCRT/API-set DLLs** occur anywhere in the actual new ZIP. Windows 10/11 supplies UCRT. Users install the official **Microsoft Visual C++ x64 Redistributable** directly from Microsoft when needed; it is a prerequisite, not part of our download. Microsoft's redistribution license for separately packaged VC++ DLLs therefore does not apply to any such DLL in our shipped folder. Embedded Microsoft-linked code within CPython binaries retains the original additional Microsoft conditions, included verbatim and referenced in `README_FIRST_WINDOWS.txt`.
+
+[Read the exact binary license audit](LICENSE_AUDIT_BETA5.md) and [Microsoft runtime download instructions](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist/). The ZIP has passed program-archive integrity and CI runtime smoke checks. A clean-machine Windows/Defender test and independent provider/content terms review are separate release gates.
 
 ## Optional online services
 
