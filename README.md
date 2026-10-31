@@ -11,7 +11,7 @@
 | **macOS 13+** | Universal macOS app for Apple Silicon and Intel, ZIP archive |
 | **Windows 10/11** | Portable **folder version** (ZIP archive containing the full `RetroCoverStudio` directory) |
 
-**Windows: folder package only. No standalone one-file EXE, installer, or single-file download is planned.** Keep the entire extracted Windows folder together. Both builds are currently unsigned; macOS is not notarized. Do not disable or bypass antivirus/Gatekeeper warnings.
+**Windows: folder package only. No standalone one-file EXE, installer, or single-file download is planned.** Keep the entire extracted Windows folder together. The Windows 10/11 (x64) version requires the **official Microsoft Visual C++ x64 Redistributable**, installed separately by the user if not already present. It does **not** ship standalone Microsoft VC++ or UCRT DLL copies. [Official Microsoft download information](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist/). Both builds are currently unsigned; macOS is not notarized. Do not disable or bypass antivirus/Gatekeeper warnings.
 
 ## Features
 
