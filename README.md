@@ -1,6 +1,6 @@
 # Retro Cover Studio — Beta 0.95.0-beta.5
 
-**Design print-ready physical game covers and disc labels** for your personal retro-game collection. Desktop applications for macOS and Windows.
+**Design print-ready physical game covers and disc labels** for your personal retro-game collection. Desktop applications for macOS, Windows, and Linux.
 
 ## AI-Assisted Development
 
@@ -10,16 +10,19 @@ The project concept, requirements, feature decisions, testing, and release manag
 
 The project is independently maintained and is not affiliated with or endorsed by OpenAI.
 
-> **Release status:** Beta 5 documentation is being prepared. No public downloadable binary is published yet. Downloads will appear under [Releases](https://github.com/elprincipal85/RetrocoverstudioBETA/releases) after final security, license, and packaging checks.
+> **Release status:** [Beta 5 is published](https://github.com/elprincipal85/RetrocoverstudioBETA/releases/tag/v0.95.0-beta.5) for macOS and Windows. A Bazzite-tested Linux x86-64 AppImage has been prepared and will be available from the same release once its asset is uploaded.
 
 ## Download formats
 
-| Platform | Planned distribution |
+| Platform | Distribution |
 | --- | --- |
 | **macOS 13+** | Universal macOS app for Apple Silicon and Intel, ZIP archive |
 | **Windows 10/11** | Portable **folder version** (ZIP archive containing the full `RetroCoverStudio` directory) |
+| **Linux x86-64** | Single portable **AppImage** (Bazzite-tested; release attachment pending) |
 
 **Windows: folder package only. No standalone one-file EXE, installer, or single-file download is planned.** Keep the entire extracted Windows folder together. The Windows 10/11 (x64) version requires the **official Microsoft Visual C++ x64 Redistributable**, installed separately by the user if not already present. It does **not** ship standalone Microsoft VC++ or UCRT DLL copies. [Official Microsoft download information](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist/). Both builds are currently unsigned; macOS is not notarized. Do not disable or bypass antivirus/Gatekeeper warnings.
+
+**Linux:** Make the AppImage executable (`chmod +x`) and start it in a Linux desktop session. No separate Python installation is needed. The Linux build includes an **Auto design (cover + logo)** option for filling available cover and logo slots without replacing manually chosen artwork. Linux data are stored under `~/.config/RetroCoverStudio/` (or `$XDG_CONFIG_HOME/RetroCoverStudio/`). See [Linux installation and release notes](LINUX_RELEASE_BETA5.md). Only download the AppImage after it appears in official release assets.
 
 ## Features
 
@@ -41,4 +44,4 @@ Application source code is maintained separately in a private development reposi
 
 Please open a [GitHub issue](https://github.com/elprincipal85/RetrocoverstudioBETA/issues) with your operating system, cover type, reproduction steps, and non-copyrighted example artwork. **Never post API keys, personal projects, or private information** in public issue reports.
 
-See [Beta 5 release notes](RELEASE_NOTES_BETA5.md) for the planned release contents and known limitations.
+See [Beta 5 release notes](RELEASE_NOTES_BETA5.md) for release contents, including the Linux AppImage preparation status and known limitations.
