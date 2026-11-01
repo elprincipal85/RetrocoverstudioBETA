@@ -1,6 +1,7 @@
 # Retro Cover Studio v0.95.0-beta.5 exact GitHub Actions inner application ZIPs
-# Private build run: 41230818790
+# macOS/Windows build: 41230818790; Linux AppImage build: 41298522111
 # Windows: portable folder, NO separately bundled Microsoft VC++/UCRT/API-set DLLs.
 # A checksum establishes file identity, not malware safety.
 f961d1b0d5ce209026879dff3f20a8098d4cea8bce0396d07ae89fee6596c776  RetroCoverStudio-Windows-folder-v0.95.0-beta.5.zip
 e7afd37b969056807c0d87a8ecfd3511c5e548d6e760e61c31804d1a2c6631fe  RetroCoverStudio-macOS-v0.95.0-beta.5.zip
+677d3e7e19928e165dd52a88c66b3331cca594bc5cc7320c45d555800cb3467c  RetroCoverStudio-Linux-x86_64-v0.95.0-beta.5.AppImage
