@@ -1,0 +1,4 @@
+# Retro Cover Studio Beta 5 — verified Linux x86-64 AppImage
+# Source: private GitHub Actions run 41298522111; tested on Bazzite with prior functional test2 build.
+# A checksum confirms file identity; it is not a malware or licensing certification.
+677d3e7e19928e165dd52a88c66b3331cca594bc5cc7320c45d555800cb3467c  RetroCoverStudio-Linux-x86_64-v0.95.0-beta.5.AppImage
