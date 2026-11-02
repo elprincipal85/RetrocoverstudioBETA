@@ -1,8 +1,8 @@
-# Retro Cover Studio — Beta 8 release candidate
+# Retro Cover Studio — Beta 8 · Public pre-release
 
 **Design print-ready retro-game covers and disc labels** for your personal collection on macOS, Windows and Linux.
 
-> **Download status (November 2, 2026):** [Beta 5 is currently published](https://github.com/elprincipal85/RetrocoverstudioBETA/releases/tag/v0.95.0-beta.5). **Beta 8 is prepared and undergoing the final publication steps.** Do not use Beta 8 download links until its new pre-release is published.
+> **Latest published pre-release:** [Retro Cover Studio v0.95.0-beta.8](https://github.com/elprincipal85/RetrocoverstudioBETA/releases/tag/v0.95.0-beta.8) (November 2, 2026), available for macOS, Windows and Linux. [Beta 5](https://github.com/elprincipal85/RetrocoverstudioBETA/releases/tag/v0.95.0-beta.5) remains available as an earlier version.
 
 ## AI-assisted development
 
@@ -16,7 +16,7 @@ Retro Cover Studio was developed with assistance from OpenAI's ChatGPT. The conc
 | **Windows 10/11**, x64 | `RetroCoverStudio-Windows-folder-v0.95.0-beta.8.zip` (portable complete application folder) |
 | **Linux**, x86-64 | `RetroCoverStudio-Linux-x86_64-v0.95.0-beta.8.AppImage` |
 
-**Only download Beta 8 once it appears under [GitHub Releases](https://github.com/elprincipal85/RetrocoverstudioBETA/releases).** For the pre-release, the downloadable files will be attached directly to its Assets section.
+**Download Beta 8 from the [official GitHub release page](https://github.com/elprincipal85/RetrocoverstudioBETA/releases/tag/v0.95.0-beta.8).** Choose the file for your operating system under **Assets**. A [SHA-256 checksum manifest](https://github.com/elprincipal85/RetrocoverstudioBETA/releases/download/v0.95.0-beta.8/SHA256SUMS-BETA8.txt) is provided to verify the files. Since Beta 8 is a **pre-release**, GitHub's generic `/releases/latest` shortcut may not point to it.
 
 Windows distributes **only the portable folder version** (not a standalone single-file EXE). Unzip the entire folder; keep its supporting files together. The Windows 10/11 build may need the [official Microsoft Visual C++ x64 Redistributable](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist/) installed separately. Microsoft VC++ and UCRT system libraries are not redistributed as separate files in this folder.
 
