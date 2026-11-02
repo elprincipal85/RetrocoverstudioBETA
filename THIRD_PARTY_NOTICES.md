@@ -1,4 +1,4 @@
-# Third-party software, service and artwork notices — Beta 5
+# Third-party software, service and artwork notices — Beta 8
 
 The project's own software is licensed under MIT (see [LICENSE](LICENSE)). This does **not** grant rights to game artwork, logos, trademarks, or third-party code.
 
@@ -8,15 +8,15 @@ The native macOS app uses system-provided Apple platform frameworks including Sw
 
 ## Windows portable folder
 
-The current **verified Windows 10/11 x64 candidate from GitHub Actions run 41230818790** is a `--onedir` ZIP, with its own MIT license and **63 third-party license/notice files** under `RetroCoverStudio/LICENSES/`. These cover CPython 3.12 and incorporated components, Tcl/Tk, OpenSSL 3, libffi, zlib, Pillow, ReportLab, Requests, pypdfium2/PDFium (including component BUILD_LICENSES), and other packaged dependencies.
+The **Beta 8 Windows 10/11 x64** download is a `--onedir` ZIP with its own MIT license and third-party license/notice files under `RetroCoverStudio/LICENSES/`. The release assembly includes a dependency-license check. Notices cover CPython 3.12 and incorporated components, Tcl/Tk, OpenSSL 3, libffi, zlib, Pillow, ReportLab, Requests, pypdfium2/PDFium (including component BUILD_LICENSES), and other packaged dependencies.
 
 **No separately bundled Microsoft Visual C++/UCRT/API-set DLLs** occur anywhere in the actual new ZIP. Windows 10/11 supplies UCRT. Users install the official **Microsoft Visual C++ x64 Redistributable** directly from Microsoft when needed; it is a prerequisite, not part of our download. Microsoft's redistribution license for separately packaged VC++ DLLs therefore does not apply to any such DLL in our shipped folder. Embedded Microsoft-linked code within CPython binaries retains the original additional Microsoft conditions, included verbatim and referenced in `README_FIRST_WINDOWS.txt`.
 
-[Read the exact binary license audit](LICENSE_AUDIT_BETA5.md) and [Microsoft runtime download instructions](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist/). The ZIP has passed program-archive integrity and CI runtime smoke checks. A clean-machine Windows/Defender test and independent provider/content terms review are separate release gates.
+[Read the previous Beta 5 license audit](LICENSE_AUDIT_BETA5.md) and [Microsoft runtime download instructions](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist/). The Beta 8 Windows archive passed the build's license inventory and CI runtime smoke checks, and the project author confirmed a local Defender check of the release candidate. This is not a security certification; users should verify release hashes and use up-to-date operating-system security protections.
 
 ## Linux x86-64 AppImage
 
-The Linux AppImage release candidate is packaged as a single self-contained x86-64 application, built on Ubuntu 22.04 from the Python/Tkinter codebase. Its private GitHub Actions run is [41298522111](https://github.com/elprincipal85/RetroCoverStudio/actions/runs/41298522111) (the build link is accessible to authorized developers of the private source repository). The Linux build was functionally tested on Bazzite using its previous test2 packaging; the final release candidate adds runtime license texts and passes frozen-app smoke checks.
+The Beta 8 Linux AppImage is packaged as a single self-contained x86-64 application, built on Ubuntu 22.04 from the Python/Tkinter codebase. The automatic build and runtime smoke checks passed. Earlier Linux versions were functionally tried on Bazzite; platform-specific compatibility of the new version still depends on the user's desktop.
 
 The AppImage includes the project's MIT license and `THIRD_PARTY_NOTICES.md` under its internal `usr/share/doc/RetroCoverStudio/`, as well as:
 - CPython 3.12, incorporated software notices, Tcl/Tk, OpenSSL, libffi, and zlib terms in `runtime-licenses/`
