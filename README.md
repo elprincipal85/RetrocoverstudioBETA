@@ -1,47 +1,52 @@
-# Retro Cover Studio — Beta 0.95.0-beta.5
+# Retro Cover Studio — Beta 8 release candidate
 
-**Design print-ready physical game covers and disc labels** for your personal retro-game collection. Desktop applications for macOS, Windows, and Linux.
+**Design print-ready retro-game covers and disc labels** for your personal collection on macOS, Windows and Linux.
 
-## AI-Assisted Development
+> **Download status (November 2, 2026):** [Beta 5 is currently published](https://github.com/elprincipal85/RetrocoverstudioBETA/releases/tag/v0.95.0-beta.5). **Beta 8 is prepared and undergoing the final publication steps.** Do not use Beta 8 download links until its new pre-release is published.
 
-Retro Cover Studio was developed with the assistance of OpenAI’s ChatGPT.
+## AI-assisted development
 
-The project concept, requirements, feature decisions, testing, and release management were directed by the project author. ChatGPT assisted with software implementation, debugging, and documentation.
+Retro Cover Studio was developed with assistance from OpenAI's ChatGPT. The concept, requirements, feature decisions, tests and release decisions are directed by the project author. ChatGPT assisted with implementation, debugging and documentation. The project is independently maintained and is not endorsed by or affiliated with OpenAI.
 
-The project is independently maintained and is not affiliated with or endorsed by OpenAI.
+## Downloads and platforms
 
-> **Release status:** [Beta 5 is published](https://github.com/elprincipal85/RetrocoverstudioBETA/releases/tag/v0.95.0-beta.5) for macOS and Windows. A Bazzite-tested Linux x86-64 AppImage has been prepared and will be available from the same release once its asset is uploaded.
-
-## Download formats
-
-| Platform | Distribution |
+| Platform | Beta 8 distribution |
 | --- | --- |
-| **macOS 13+** | Universal macOS app for Apple Silicon and Intel, ZIP archive |
-| **Windows 10/11** | Portable **folder version** (ZIP archive containing the full `RetroCoverStudio` directory) |
-| **Linux x86-64** | Single portable **AppImage** (Bazzite-tested; release attachment pending) |
+| **macOS 13+** (Apple Silicon / Intel) | `RetroCoverStudio-macOS-v0.95.0-beta.8.zip` (Universal application) |
+| **Windows 10/11**, x64 | `RetroCoverStudio-Windows-folder-v0.95.0-beta.8.zip` (portable complete application folder) |
+| **Linux**, x86-64 | `RetroCoverStudio-Linux-x86_64-v0.95.0-beta.8.AppImage` |
 
-**Windows: folder package only. No standalone one-file EXE, installer, or single-file download is planned.** Keep the entire extracted Windows folder together. The Windows 10/11 (x64) version requires the **official Microsoft Visual C++ x64 Redistributable**, installed separately by the user if not already present. It does **not** ship standalone Microsoft VC++ or UCRT DLL copies. [Official Microsoft download information](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist/). Both builds are currently unsigned; macOS is not notarized. Do not disable or bypass antivirus/Gatekeeper warnings.
+**Only download Beta 8 once it appears under [GitHub Releases](https://github.com/elprincipal85/RetrocoverstudioBETA/releases).** For the pre-release, the downloadable files will be attached directly to its Assets section.
 
-**Linux:** Make the AppImage executable (`chmod +x`) and start it in a Linux desktop session. No separate Python installation is needed. The Linux build includes an **Auto design (cover + logo)** option for filling available cover and logo slots without replacing manually chosen artwork. Linux data are stored under `~/.config/RetroCoverStudio/` (or `$XDG_CONFIG_HOME/RetroCoverStudio/`). See [Linux installation and release notes](LINUX_RELEASE_BETA5.md). Only download the AppImage after it appears in official release assets.
+Windows distributes **only the portable folder version** (not a standalone single-file EXE). Unzip the entire folder; keep its supporting files together. The Windows 10/11 build may need the [official Microsoft Visual C++ x64 Redistributable](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist/) installed separately. Microsoft VC++ and UCRT system libraries are not redistributed as separate files in this folder.
+
+The macOS application is unsigned and not notarized. Windows binaries are unsigned too; security prompts may occur. Do not disable antivirus or platform security to run the app.
+
+For Linux: make the AppImage executable (`chmod +x`) and launch in a graphical desktop session. Compatibility with every distribution is not guaranteed; earlier Linux builds have been tried on Bazzite.
 
 ## Features
 
-- Nine layouts for DVD, Blu-ray, and jewel cases, including outside wraps and inside artwork.
-- Print-size A4/A3 PDF layouts; use **100% / Actual Size** when printing.
-- Choose between proportional **Fill / Crop** and **Fit / Blurred Background** image modes (no stretching).
-- Adjustable disc-label logo, disc numbering, and media type positions (Off / Top / Bottom / Left / Right / Center).
-- Optional translucent black text strips, strip opacity and disc-label text colors.
-- Custom logos, backgrounds, optional game metadata, and saved projects.
-- Optional SteamGridDB artwork lookup with a **user-provided** API key and optional Wikidata metadata.
+- Nine case formats spanning standard/slim/multidisc DVD, Blu-ray and CD jewel case.
+- Print-size A4/A3 PDF export, inside and outside cover layouts, and multi-disc labels.
+- Continuous wraparound art with independent front/back overlay images and an optionally recolored/translucent spine panel.
+- Customizable top media strip **background color and opacity**, with independent replacement images for the spine `PC` mark and the front `PC CD-ROM / PC DVD-ROM / PC BLU-RAY` wordmark.
+- **600 dpi transparent PNG export** for directly printable discs, with individually adjustable inner and outer print diameters; can be imported into Canon Easy-PhotoPrint Editor or comparable disc-printing software.
+- Artwork can be replaced freely without manual unlocking; local images and optional SteamGridDB searches.
+- Proportional **Fill / Crop** and **Fit / Blurred Background** artwork modes without stretching.
+- Individual disc game-logo, number and media-type positions; optional translucent text strip and selectable text color.
+- Editable metadata, optional online factual metadata lookups, saved projects and efficient **Update Preview** for text changes.
+- Optional user-triggered **Auto design** to fill standard artwork slots. Screenshots and custom logos are not overwritten automatically.
 
-## Privacy, licenses and artwork
+Print PDF artwork at **Actual Size / 100%**, not Fit to Page. Import PNG disc labels into a compatible printer editor using the correct hole and outer-print dimensions. Verify alignment with a test blank before printing your collection.
 
-No personal API keys or third-party game artwork are included with downloads. Optional online services communicate with their providers when used. Artwork, logos and trademarks remain the property of their rights holders; supplying an API key does not grant redistribution or commercial rights. This tool is independent and is not affiliated with GOG, Steam, SteamGridDB, game publishers, or distributors.
+## Privacy, rights, licenses
 
-Application source code is maintained separately in a private development repository. The public repository is for beta download releases, documentation, and issue reports. The project's own software is MIT licensed; see [LICENSE](LICENSE) and [third-party notices](THIRD_PARTY_NOTICES.md).
+No API keys or copyrighted game artwork are bundled. Each user supplies their own SteamGridDB API key. Provider access does not grant license rights to reproduce or distribute individual artworks or trademarks. Retro Cover Studio is independent and is not affiliated with GOG, Steam, SteamGridDB or game publishers.
 
-## Feedback
+Application source is developed in a separate **private** repository. This public repository hosts downloads, documentation and issue reports. Our application code is licensed under [MIT](LICENSE); [third-party notices](THIRD_PARTY_NOTICES.md) describe external dependencies. Linux and Windows share the Python/Tkinter app and file format; macOS has a separate native application and project autosave format. Projects are not currently interchangeable between these systems.
 
-Please open a [GitHub issue](https://github.com/elprincipal85/RetrocoverstudioBETA/issues) with your operating system, cover type, reproduction steps, and non-copyrighted example artwork. **Never post API keys, personal projects, or private information** in public issue reports.
+## Release notes and feedback
 
-See [Beta 5 release notes](RELEASE_NOTES_BETA5.md) for release contents, including the Linux AppImage preparation status and known limitations.
+See [Beta 8 release notes](RELEASE_NOTES_BETA8.md) for detailed changes, installation and known limitations. [Previous Beta 5 notes](RELEASE_NOTES_BETA5.md) remain available.
+
+Found a bug? [Open an issue](https://github.com/elprincipal85/RetrocoverstudioBETA/issues) with your OS, template and steps to reproduce. **Never paste API keys, personal project files or private details into issues.**
